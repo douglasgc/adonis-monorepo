@@ -4,7 +4,7 @@
     "services/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "npm i services/*",
     "lint": "lerna exec yarn lint",
     "test": "lerna exec yarn test",
     "test:ci": "lerna exec --concurrency 1 yarn test:ci",
@@ -39,8 +39,10 @@
     "@types/react": "16.8.16"
   },
   "dependencies": {
+    "adonis-service-user": "file:services/users",
     "class-validator": "^0.11.1",
     "dtslint": "^3.3.0",
+    "services-common": "file:services/common",
     "yarn": "^1.22.4"
   }
 }
