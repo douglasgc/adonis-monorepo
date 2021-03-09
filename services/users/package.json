@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "serverless": "npm run serverless:deploy",
-    "serverless:deploy": "serverless deploy",
-    "deploy": "npm run serverless -s qa",
+    "serverless:deploy": "serverless deploy -s qa",
+    "deploy": "npm run serverless",
     "deploy:prod": "serverless deploy -s production",
     "test": "node ace test",
     "test:ci": "node ace test"
