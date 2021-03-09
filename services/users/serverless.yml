@@ -1,0 +1,20 @@
+service: service-users
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: qualidade
+  region: sa-east-1
+
+functions:
+  index:
+    handler: aws-lambda.proxy
+    events:
+      - http:
+          cors: true
+          path: '/'
+          method: any
+      - http:
+          cors: true
+          path: '{proxy+}'
+          method: any

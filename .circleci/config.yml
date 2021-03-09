@@ -29,32 +29,20 @@ aliases:
   - &save_cache
     save_cache:
       paths:
-        - node_modules
-        - services/auth/node_modules
         - services/users/node_modules
         - services/common/node_modules
-      key: dependencies-cache-{{ checksum "services/auth/package-lock.json" }}
+      key: dependencies-cache-{{ checksum "services/users/package-lock.json" }}
 
   - &restore_cache
     restore_cache:
       keys:
-        - dependencies-cache-{{ checksum "services/auth/package-lock.json" }}
+        - dependencies-cache-{{ checksum "services/users/package-lock.json" }}
         - dependencies-cache
 
   - &install_dependencies
     run:
       name: Install Dependencies
       command: yarn install && npm run bootstrap
-
-  - &run_linter
-    run:
-      name: Run Linter
-      command: yarn lint
-
-  - &run_prettier
-    run:
-      name: Run Prettier
-      command: yarn prettier:ci
 
   - &run_tests
     run:
@@ -91,8 +79,6 @@ jobs:
       - *checkout
       - *install_dependencies
       - *save_cache
-      - *run_linter
-      - *run_prettier
       - *store_test_results
 
   deploy-qa:
@@ -108,7 +94,7 @@ jobs:
       - run:
           name: Setup QA Services
           command: >
-            mv services/common/src/environment/config.example.ts services/common/src/environment/config.qa.ts
+            mv qa.env services/users/.env
 
       - run:
           name: Deploy services to QA
@@ -126,9 +112,9 @@ jobs:
       - *install_aws_cli
 
       - run:
-          name: Setup PROD Services Environment
+          name: Setup Production Services Environment
           command: >
-            mv services/common/src/environment/config.prod.ts services/common/src/environment/config.ts
+            mv production.env services/users/.env
 
       - run:
           name: Deploy services to PROD
