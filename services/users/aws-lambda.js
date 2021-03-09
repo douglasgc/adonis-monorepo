@@ -18,7 +18,7 @@ function bootstrapServer() {
             app = handler;
             return http.createServer(handler);
         })
-        .catch(console.error);
+        .catch((error) => console.error('catchOnStart', error));
 }
 exports.proxy = (event, context, callback) => {
     if (app == undefined) {
