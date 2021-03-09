@@ -4,7 +4,7 @@
     "services/*"
   ],
   "scripts": {
-    "bootstrap": "npm i services/*",
+    "bootstrap": "npm i && npm i services/*",
     "lint": "lerna exec yarn lint",
     "test": "lerna exec yarn test",
     "test:ci": "lerna exec --concurrency 1 yarn test:ci",
