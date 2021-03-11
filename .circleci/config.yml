@@ -62,6 +62,16 @@ aliases:
   - &setup_path_env
     run: echo 'export PATH=/home/circleci/.local/bin:$PATH' >> $BASH_ENV
 
+  - &install_aws_cli
+    run:
+      name: Install awscli
+      command: |
+        sudo apt-get update
+        sudo apt-get install python3.5-dev
+        curl -O https://bootstrap.pypa.io/pip/3.5/get-pip.py
+        python3.5 get-pip.py --user
+        pip install awscli --upgrade --user
+
 jobs:
   build:
     <<: *container_config
@@ -71,6 +81,7 @@ jobs:
       - *install_dependencies
       - *save_cache
       - *store_test_results
+      - *install_aws_cli
 
   deploy-qa:
     <<: *container_config
@@ -80,6 +91,7 @@ jobs:
       - *restore_cache
       - *install_serverless_cli
       - *setup_path_env
+      - *install_aws_cli
 
       - run:
           name: Setup QA Services
