@@ -31,7 +31,9 @@
     "@adonisjs/lucid": "^6.1.3",
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8",
-    "aws-lambda-create-request-response": "^0.2.7"
+    "@adonisjs/validator": "^5.0.6",
+    "aws-lambda-create-request-response": "^0.2.7",
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "serverless": "^2.29.0"
