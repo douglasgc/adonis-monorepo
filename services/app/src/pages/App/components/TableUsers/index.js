@@ -1,21 +1,8 @@
-import React, { Component, useState } from "react";
-import { withRouter } from "react-router-dom";
-import { StreamBuilder, ConnectionState } from "react-stream-builder";
+import React, { Component, useState, useEffect } from "react";
 import { UsersService } from "../../../../services/users";
+export const TableUsers =  () => {
+  
 
-
-class TableUsersState extends Component {
-  usersService = new UsersService();
-  handleLogout = e => {
-    this.props.history.push('/');
-  };
-  render () {
-    [data, setData] = useState({ hits: [] });
-
-    useEffect(async () => {
-      const result = await this.usersService.listAll();
-      setData(result.data);
-    });
     return (
               <table className="table">
                 <thead>
@@ -48,6 +35,4 @@ class TableUsersState extends Component {
                 </tbody>
               </table>
             );
-  };
-}
-export const TableUsers = withRouter(TableUsersState);
+};
