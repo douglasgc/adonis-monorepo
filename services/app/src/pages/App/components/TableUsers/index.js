@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
-import { UsersService } from "../../../../services/users";
+import React from "react";
 export const TableUsers =  () => {
   
 
