@@ -1,4 +1,4 @@
-# AdonisJS + AWS Serverless Monorepo
+# AdonisJS + React + AWS Serverless Arquieture
 
 ## How to Start
 
@@ -15,6 +15,7 @@ CI/CD is setup for 2 different environments: `qa` (qa), `prod` (for production).
 
 - common
 - users
+- app
 
 ## Pré-Requisitos
 

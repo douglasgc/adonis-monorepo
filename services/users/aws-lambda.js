@@ -1,14 +1,8 @@
 const { Ignitor } = require('@adonisjs/ignitor')
-const createRequestResponse = require('aws-lambda-create-request-response')
+const serverless = require('serverless-http');
 const http = require('http')
 
 var app;
-
-function handler(event, context, callback) {
-    const { req, res } = createRequestResponse(event, callback)
-    console.log(app);
-    app(req, res)
-}
 
 function bootstrapServer() {
     return new Ignitor(require('@adonisjs/fold'))
@@ -20,12 +14,11 @@ function bootstrapServer() {
         })
         .catch((error) => console.error('catchOnStart', error));
 }
-exports.proxy = (event, context, callback) => {
-    context.callbackWaitsForEmptyEventLoop =
-        process.env.WAIT_FOR_EMPTY_EVENT_LOOP === 'yes';
+exports.proxy = async (event, context, callback) => {
     if (app == undefined) {
-        bootstrapServer().then(() => handler(event, context, callback))
-        return;
-    };
-    handler(event, context, callback);
+        await bootstrapServer();
+    }
+    const handler = serverless(app);
+    const result = await handler(event, context);
+    return result;
 }
