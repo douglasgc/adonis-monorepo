@@ -10,8 +10,8 @@ injectGlobal`
   outline: 0;
 }
 body, html {
-  background: #eee;
-  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  background: #fff;
+  font-family: 'Red Hat Display', sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   height: 100%;

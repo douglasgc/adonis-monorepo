@@ -10,17 +10,30 @@ const App = () => {
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const [reload, reloadUsers] = useState(true);
+  const [idRemoveUser, removeItem] = useState(undefined);
+
   const usersService = new UsersService();
 
+  // Effect to update table
   useEffect(() => {
-    setUsers([]);
+    setLoading(true);
     usersService.listAll()
       .then((response) => {
         setUsers(response.data);
         setLoading(false);
       })
       .catch(() => setHasError(true));
-  }, []);
+  }, [reload]);
+
+  // Effect to remove item
+  useEffect(async () => {
+    if (!idRemoveUser) return;
+    await usersService.remove(idRemoveUser);
+    reloadUsers(idRemoveUser);
+  }, [idRemoveUser]);
+
+
   return (
     <div>
       <Container>
@@ -36,7 +49,7 @@ const App = () => {
       </Container>
       <Container>
         {
-          (!hasError && !loading) && (<TableUsers data={users}></TableUsers>)
+          (!hasError && !loading) && (<TableUsers data={users} removeItem={removeItem}></TableUsers>)
         }
         {
           (!hasError && loading) && (<div>Carregando.</div>)

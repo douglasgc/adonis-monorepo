@@ -22,6 +22,7 @@ Route.on('/').render('welcome')
 Route.group(() => {
   Route.post('create', 'UserController.create').validator('User')
   Route.get('/', 'UserController.list').middleware(['auth'])
+  Route.delete('/:id', 'UserController.delete').middleware(['auth'])
 })
   .prefix('users')
 
