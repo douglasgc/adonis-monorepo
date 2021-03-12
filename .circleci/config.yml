@@ -32,13 +32,13 @@ aliases:
         - node_modules
         - services/users/node_modules
         - services/common/node_modules
-      key: dependencies-cache-v1.0.2-{{ checksum "services/users/package-lock.json" }}
+      key: dependencies-cache-v1.0.3-{{ checksum "services/users/package-lock.json" }}
 
   - &restore_cache
     restore_cache:
       keys:
-        - dependencies-cache-v1.0.2-{{ checksum "services/users/package-lock.json" }}
-        - dependencies-cache-v1.0.2
+        - dependencies-cache-v1.0.3-{{ checksum "services/users/package-lock.json" }}
+        - dependencies-cache-v1.0.3
 
   - &install_dependencies
     run:

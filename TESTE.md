@@ -16,3 +16,5 @@ Além disso, fiz uso do CircleCI e conceitos Devops para automatizar o deploy da
 Tive um proveito muito grande dos meus estudos :D. Ainda tinha muitas ideias pra colocar nesse teste, mas o tempo é limitado e a solução aqui proposta já me esclareceu diversos pontos. Espero que vocês gostem. 
 
 Caso precisem tirar alguma dúvida meu contato é (45) 9 9101-9920 douglasdm97@gmail.com
+
+(um adendo que percebi agora, alguns dos commits foram pela conta do meu amigo devMontagnini André Montagnini, por que ele tinha deixado o github dele na global do meu PC, mas foi tudo feito por mim :D)
