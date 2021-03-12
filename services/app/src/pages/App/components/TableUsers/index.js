@@ -10,17 +10,17 @@ export const TableUsers = (props) => {
     <Table className="table">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nome</th>
-          <th scope="col">E-mail</th>
-          <th scope="col">Ações</th>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
         {
           props.data.map((item) => (
             <tr key={item.id.toString()}>
-              <td scope="row">
+              <td>
                 {item.id.toString()}
               </td>
               <td>{item.name}</td>

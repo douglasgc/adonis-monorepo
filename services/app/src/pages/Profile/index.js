@@ -70,7 +70,7 @@ const Profile = (props) => {
                       changePassword(e.target.value)
                     }}
                   />
-                  <button disabled={newPassword == undefined} type="submit">Alterar Senha</button>
+                  <button disabled={newPassword === undefined} type="submit">Alterar Senha</button>
                 </Form>
               </div>
             </Content>
