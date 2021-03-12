@@ -8,6 +8,7 @@ function handler(event, context, callback) {
     context.callbackWaitsForEmptyEventLoop =
         process.env.WAIT_FOR_EMPTY_EVENT_LOOP === 'yes'
     const { req, res } = createRequestResponse(event, callback)
+    console.log(app);
     app(req, res)
 }
 
