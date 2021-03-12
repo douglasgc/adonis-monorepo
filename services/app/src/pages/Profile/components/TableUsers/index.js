@@ -1,7 +1,5 @@
 import React from "react";
 import { Table, Button } from "./styles";
-import { Link } from "react-router-dom";
-
 export const TableUsers = (props) => {
   if (props.data === undefined) {
     return (<div></div>);
@@ -30,11 +28,9 @@ export const TableUsers = (props) => {
                   Excluir
                 </Button>
 
-                <Link to={"/profile/" + item.id}>
-                  <Button>
-                    Alterar Senha
+                <Button>
+                  Alterar Senha
                 </Button>
-                </Link>
               </td>
             </tr>
           ))

@@ -20,13 +20,21 @@ class UserController {
   async list() {
     return await User.all()
   }
-  async delete({ params, auth }) {
+  async find({ params }) {
+    return await User.findOrFail(params.id)
+  }
+  async delete({ params }) {
     const user = await User.findOrFail(params.id)
     await Token
       .query()
       .where('user_id', params.id)
       .delete()
     await user.delete()
+  }
+  async changePassword({ params, request }) {
+    const user = await User.findOrFail(params.id)
+    user.password = request.all().password
+    await user.save()
   }
 }
 

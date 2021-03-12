@@ -6,6 +6,7 @@ import { isAuthenticated } from "./services/auth";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import AppMain from "./pages/App";
+import Profile from "./pages/Profile";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -27,6 +28,8 @@ const Routes = () => (
         <Route exact path="/" component={SignIn} />
         <Route path="/signup" component={SignUp} />
         <PrivateRoute path="/app" component={AppMain} />
+        <PrivateRoute path="/profile/:id" component={Profile} />
+
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
     </Fragment>
