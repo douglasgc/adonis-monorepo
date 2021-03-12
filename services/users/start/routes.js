@@ -21,12 +21,12 @@ Route.on('/').render('welcome')
 // users
 Route.group(() => {
   Route.post('create', 'UserController.create').validator('User')
-  Route.get('/', 'UserController.list')
-})  
-.prefix('users')
+  Route.get('/', 'UserController.list').middleware(['auth'])
+})
+  .prefix('users')
 
 // auth
 Route.group(() => {
   Route.post('login', 'AuthController.login').validator('Login')
 })
-.prefix('auth')
+  .prefix('auth')
